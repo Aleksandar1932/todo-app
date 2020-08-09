@@ -35,19 +35,6 @@ class _HomeState extends State<Home> {
       initialData: [],
       value: DatabaseService().getUserTasks(widget.currentUser.uid),
       child: Scaffold(
-//          appBar: AppBar(
-//            actions: [
-//              IconButton(
-//                icon: Icon(Icons.exit_to_app),
-//                onPressed: () {
-//                  AuthService().signOut();
-//                },
-//              )
-//            ],
-//            title: Text("$APP_NAME"),
-//            centerTitle: true,
-//            elevation: 0,
-//          ),
           appBar: ToDoAppBar(
             isHome: true,
           ),

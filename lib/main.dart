@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:todo/screens/wrapper.dart';
 import 'package:todo/services/auth.dart';
 import 'package:provider/provider.dart';
+import 'package:todo/shared/constants.dart';
 
 import 'main.reflectable.dart';
 import 'models/user.dart';
@@ -19,13 +21,13 @@ class MyApp extends StatelessWidget {
       value: AuthService().user,
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
+          title: APP_NAME,
           theme: ThemeData(
               primarySwatch: Colors.purple,
               scaffoldBackgroundColor: Colors.grey[100],
               visualDensity: VisualDensity.adaptivePlatformDensity,
               textTheme: TextTheme(
-                headline1: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                headline1: TextStyle(fontSize: 24, fontWeight: FontWeight.bold,),
                 headline2: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 headline3: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 bodyText1: TextStyle(fontSize: 16.0),

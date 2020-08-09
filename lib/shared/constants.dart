@@ -15,5 +15,5 @@ const INITIAL_DATE_DAYS_OFFSET = 1;
 const String TODO_TASKS_HEADING = "Tasks to do";
 const String DONE_TASKS_HEADING = "Done tasks";
 
-const String TODO_TASKS_NO_TASKS = "You haven't added tasks!";
+const String TODO_TASKS_NO_TASKS = "You haven't added any tasks!";
 const String DONE_TASKS_NO_TASKS = "You've done all of your tasks!";

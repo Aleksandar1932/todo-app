@@ -26,7 +26,14 @@ class _TasksListState extends State<TasksList> {
       return Loading();
     } else {
       if (widget.tasks.isEmpty) {
-        return Text(widget.areToDos ? "$TODO_TASKS_NO_TASKS" : "$DONE_TASKS_NO_TASKS", style: Theme.of(context).textTheme.headline1,);
+        return Padding(
+          padding:
+              EdgeInsets.fromLTRB(0, MediaQuery.of(context).size.width / 2, 0, MediaQuery.of(context).size.width / 2),
+          child: Text(
+            widget.areToDos ? "$TODO_TASKS_NO_TASKS" : "$DONE_TASKS_NO_TASKS",
+            style: Theme.of(context).textTheme.headline1,
+          ),
+        );
       } else
         return Padding(
           padding: const EdgeInsets.all(20),
