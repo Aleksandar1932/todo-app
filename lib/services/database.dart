@@ -8,25 +8,23 @@ import 'package:todo/models/task.dart';
 import 'package:todo/models/user.dart';
 import 'dart:convert';
 
+import 'package:todo/shared/constants.dart';
+
 abstract class BaseDatabaseService {
-  // users methods
+  // On user sign up this method is used to add the newly created user to the users collection in Firestore
   Future addUserToUsersCollection(User user);
 
   Future addNewTaskToUserTasks(User user, Task task);
 
   Future removeTaskFromUserTasks(User user, Task task);
 
-  // tasks methods
   Future finishTask(User user, String taskId);
 
   Future undoFinishedTask(User user, String taskId);
 
-  // categories methods
   Future addNewCategoryToUserCategories(User user, TaskCategory category);
 
   Future getAllUserCategoriesNames(User user);
-
-//
 
   Future createDefaultCategoryOnUserSignUp(User user);
 }
@@ -65,7 +63,6 @@ class DatabaseService implements BaseDatabaseService {
 
   @override
   Future finishTask(User user, String taskId) async {
-    // TODO: implement finishTask
     return await tasksCollection
         .document(user.uid)
         .collection("userTasks")
@@ -75,7 +72,6 @@ class DatabaseService implements BaseDatabaseService {
 
   @override
   Future undoFinishedTask(User user, String taskId) async {
-    // TODO: implement undoFinishTask
     return await tasksCollection
         .document(user.uid)
         .collection("userTasks")
@@ -91,43 +87,20 @@ class DatabaseService implements BaseDatabaseService {
 
   @override
   Future<List<TaskCategory>> getAllUserCategoriesNames(User user) async {
-    // TODO: implement getAllUserCategoriesNames
     var snapshot = await categoriesCollection.document(user.uid).collection("userCategories").getDocuments();
     return snapshot.documents
         .map((e) => TaskCategory.getAllCategories(id: e.documentID.toString(), name: e.data['name'].toString()))
         .toList();
   }
 
-//  @override
-//  Future addTaskToCategory(TaskCategory category, User user, Task task) async {
-//    return await categoriesCollection
-//        .document(user.uid)
-//        .collection("userCategories")
-//        .document(category.id)
-//        .collection("tasks")
-//        .add(JsonMapper.toMap(task));
-//  }
-
   @override
   Future createDefaultCategoryOnUserSignUp(User user) async {
-    TaskCategory defaultCategory = TaskCategory(name: "Personal");
+    TaskCategory defaultCategory = TaskCategory(name: DEFAULT_CATEGORY_NAME);
     return addNewCategoryToUserCategories(user, defaultCategory);
   }
 
-//  @override
-//  Future removeTaskFromUserCategory(User user, Task task, String categoryId) async {
-//    return await categoriesCollection
-//        .document(user.uid)
-//        .collection("userCategories")
-//        .document(categoryId)
-//        .collection("tasks")
-//        .document(task.taskId)
-//        .delete();
-//  }
-
   @override
   Future removeTaskFromUserTasks(User user, Task task) async {
-//    await removeTaskFromUserCategory(user, task, task.category.id);
     return await tasksCollection.document(user.uid).collection("userTasks").document(task.taskId).delete();
   }
 }

@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:todo/models/task.dart';
 import 'package:todo/models/user.dart';
 import 'package:todo/screens/home/speed_dial_fab.dart';
+import 'package:todo/screens/home/stats/stats.dart';
 import 'package:todo/screens/home/tasks/todo_tasks.dart';
 import 'package:todo/screens/home/tasks/done_tasks.dart';
 import 'package:todo/services/auth.dart';
@@ -57,6 +58,11 @@ class _HomeState extends State<Home> {
                   children: [DoneTasks()],
                 ),
               ),
+              SingleChildScrollView(
+                child: Column(
+                  children: [Stats()],
+                ),
+              ),
             ],
           ),
           bottomNavigationBar: BottomNavigationBar(
@@ -68,6 +74,10 @@ class _HomeState extends State<Home> {
               BottomNavigationBarItem(
                 icon: Icon(Icons.done),
                 title: Text('Done'),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.show_chart),
+                title: Text('Stats'),
               ),
             ],
             currentIndex: _currentPageIndex,

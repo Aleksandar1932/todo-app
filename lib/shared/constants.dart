@@ -17,3 +17,5 @@ const String DONE_TASKS_HEADING = "Done tasks";
 
 const String TODO_TASKS_NO_TASKS = "You haven't added any tasks!";
 const String DONE_TASKS_NO_TASKS = "You've done all of your tasks!";
+
+const String DEFAULT_CATEGORY_NAME = "Personal";
