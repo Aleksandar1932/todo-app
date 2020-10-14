@@ -1,5 +1,7 @@
 # ⌛ ToDo - Simple app that makes managing tasks easier.
 
+[⬇️Download APK](https://drive.google.com/uc?id=1jepd-M5lwjDbDf8VXaeKj3EugvrjApWz&export=download)
+
 ## About
 
 ToDo is a mobile app, available for Android and iOS (as a native app). The main goal of the app is to be used for managing daily tasks. Each user can add different task categories, and then add tasks to those categories.
